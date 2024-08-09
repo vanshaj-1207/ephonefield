@@ -68,6 +68,7 @@ class CountryPickerButton extends StatelessWidget {
               Image.asset(
                 initialValue.flagImagePath,
                 width: 20.0,
+                package: 'ephonefield',
               ),
               const SizedBox(
                 width: 4.0,

@@ -12,6 +12,7 @@ class CountryCard extends StatelessWidget {
       leading: Image.asset(
         country.flagImagePath,
         width: 32.0,
+        package: 'ephonefield',
       ),
       title: Text(country.name),
       subtitle: Text(country.alpha3),
