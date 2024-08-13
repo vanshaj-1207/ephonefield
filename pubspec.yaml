@@ -1,6 +1,6 @@
 name: ephonefield
 description: "Email and phone number auto detection"
-version: 0.0.3
+version: 0.0.4
 homepage:
 
 environment:
