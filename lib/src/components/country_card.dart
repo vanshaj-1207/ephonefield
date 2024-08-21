@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import '../enums/country.dart';
 
 class CountryCard extends StatelessWidget {
-  const CountryCard({super.key, required this.country});
+  const CountryCard({super.key, required this.country,this.showFlag = false});
   final Country country;
+  final bool showFlag;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(
+      leading: showFlag?Image.asset(
         country.flagImagePath,
         width: 32.0,
         package: 'ephonefield',
-      ),
+      ):const SizedBox.shrink(),
       title: Text(country.name),
       subtitle: Text(country.alpha3),
       trailing: Text(

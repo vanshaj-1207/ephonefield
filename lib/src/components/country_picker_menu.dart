@@ -10,6 +10,7 @@ class CountryPickerMenu extends StatelessWidget {
     required this.itemBuilder,
     required this.titlePadding,
     required this.isSearchable,
+    required this.showFlag,
     required this.title,
     required this.searchInputDecoration,
     required this.height,
@@ -20,6 +21,7 @@ class CountryPickerMenu extends StatelessWidget {
   final InputDecoration searchInputDecoration;
   final EdgeInsetsGeometry titlePadding;
   final bool isSearchable;
+  final bool showFlag;
   final String? title;
   final double height;
   final List<Country> countries;
@@ -48,6 +50,7 @@ class CountryPickerMenu extends StatelessWidget {
               isSearchable: isSearchable,
               onValuePicked: onValuePicked,
               itemBuilder: itemBuilder,
+              showFlag: showFlag,
               searchInputDecoration: searchInputDecoration,
               countries: countries,
             ),
