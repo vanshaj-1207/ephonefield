@@ -15,6 +15,7 @@ class EPhoneField extends StatefulWidget {
     this.focusNode,
     this.initialType = EphoneFieldType.initial,
     this.countries = Country.values,
+    this.showFlag = false,
     this.searchInputDecoration = const InputDecoration(
       hintText: 'Search your country',
       border: OutlineInputBorder(),
@@ -161,6 +162,7 @@ class EPhoneField extends StatefulWidget {
 
   /// The [double] to be used as the width of the country picker button. Defaults to 100.0.
   final double countryPickerButtonWidth;
+  final bool showFlag;
 
   /// The [AutovalidateMode] to be used as the autovalidate mode of the input field. Defaults to [AutovalidateMode.onUserInteraction].
   final AutovalidateMode? autovalidateMode;
@@ -241,6 +243,7 @@ class _EphoneFieldState extends State<EPhoneField> {
                 _focusNode.requestFocus();
               });
             },
+      showFlag: widget.showFlag,
             menuType: widget.menuType,
             isSearchable: widget.isSearchable,
             searchInputDecoration: widget.searchInputDecoration,

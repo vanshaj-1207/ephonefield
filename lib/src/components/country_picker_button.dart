@@ -13,6 +13,7 @@ class CountryPickerButton extends StatelessWidget {
     required this.onValuePicked,
     required this.menuType,
     required this.isSearchable,
+    required this.showFlag,
     required this.searchInputDecoration,
     required this.titlePadding,
     required this.title,
@@ -27,6 +28,7 @@ class CountryPickerButton extends StatelessWidget {
   final List<Country> countries;
   final PickerMenuType menuType;
   final bool isSearchable;
+  final bool showFlag;
   final InputDecoration searchInputDecoration;
   final EdgeInsetsGeometry titlePadding;
   final CountryPickerHeigth pickerHeight;
@@ -45,6 +47,7 @@ class CountryPickerButton extends StatelessWidget {
           titlePadding,
           pickerHeight,
           isSearchable,
+          showFlag,
           countries,
           onValuePicked),
       child: Padding(
@@ -65,13 +68,13 @@ class CountryPickerButton extends StatelessWidget {
               const SizedBox(
                 width: 4.0,
               ),
-              Image.asset(
+              showFlag?Image.asset(
                 initialValue.flagImagePath,
                 width: 20.0,
                 package: 'ephonefield',
-              ),
-              const SizedBox(
-                width: 4.0,
+              ):SizedBox.shrink(),
+               SizedBox(
+                width: showFlag?4.0:0,
               ),
               Icon(icon),
             ],
@@ -90,12 +93,13 @@ void Function()? _openCountryPickerMenu(
     EdgeInsetsGeometry titlePadding,
     CountryPickerHeigth pickerHeight,
     bool isSearchable,
+    bool showFlag,
     List<Country> countries,
     void Function(Country) onValuePicked) {
   switch (menuType) {
     case PickerMenuType.dialog:
       return _openCountryPickerDialog(context, searchInputDecoration, title,
-          titlePadding, isSearchable, pickerHeight, countries, onValuePicked);
+          titlePadding, isSearchable,showFlag, pickerHeight, countries, onValuePicked);
     case PickerMenuType.bottomSheet:
       return _openCountryPickerBottomSheet(
           context,
@@ -103,12 +107,13 @@ void Function()? _openCountryPickerMenu(
           title,
           titlePadding,
           isSearchable,
+          showFlag,
           pickerHeight,
           countries,
           onValuePicked);
     case PickerMenuType.page:
       return _openCountryPickerPage(context, searchInputDecoration, title,
-          titlePadding, isSearchable, countries, onValuePicked);
+          titlePadding, isSearchable,showFlag, countries, onValuePicked);
   }
 }
 
@@ -118,6 +123,7 @@ void Function()? _openCountryPickerDialog(
     String? title,
     EdgeInsetsGeometry titlePadding,
     bool isSearchable,
+    bool showFlag,
     CountryPickerHeigth pickerHeight,
     List<Country> countries,
     void Function(Country) onValuePicked) {
@@ -133,6 +139,7 @@ void Function()? _openCountryPickerDialog(
             title: title,
             titlePadding: titlePadding,
             isSearchable: isSearchable,
+            showFlag: showFlag,
             height: pickerHeight.height(context),
             searchInputDecoration: searchInputDecoration,
             onValuePicked: (Country country) {
@@ -155,6 +162,7 @@ void Function()? _openCountryPickerBottomSheet(
   String? title,
   EdgeInsetsGeometry titlePadding,
   bool isSearchable,
+  bool showFlag,
   CountryPickerHeigth pickerHeight,
   List<Country> countries,
   void Function(Country) onValuePicked,
@@ -173,6 +181,7 @@ void Function()? _openCountryPickerBottomSheet(
       isScrollControlled: true,
       builder: (context) => CountryPickerMenu(
         title: title,
+        showFlag: showFlag,
         titlePadding: titlePadding,
         isSearchable: isSearchable,
         height: pickerHeight.height(context),
@@ -195,6 +204,7 @@ void Function()? _openCountryPickerPage(
   String? title,
   EdgeInsetsGeometry titlePadding,
   bool isSearchable,
+  bool showFlag,
   List<Country> countries,
   void Function(Country) onValuePicked,
 ) {
@@ -203,6 +213,7 @@ void Function()? _openCountryPickerPage(
       title: null,
       titlePadding: titlePadding,
       isSearchable: isSearchable,
+      showFlag: showFlag,
       height: MediaQuery.of(context).size.height,
       searchInputDecoration: searchInputDecoration,
       onValuePicked: (Country country) {

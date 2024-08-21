@@ -11,11 +11,13 @@ class CountryPicker extends StatefulWidget {
     required this.searchInputDecoration,
     required this.isSearchable,
     required this.countries,
+     this.showFlag = false,
   });
   final void Function(Country) onValuePicked;
   final Widget Function(Country) itemBuilder;
   final InputDecoration searchInputDecoration;
   final bool isSearchable;
+  final bool showFlag;
   final List<Country> countries;
 
   @override
