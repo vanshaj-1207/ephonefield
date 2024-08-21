@@ -65,8 +65,8 @@ class CountryPickerButton extends StatelessWidget {
                fontWeight: FontWeight.bold,
              ),
               ),
-              const SizedBox(
-                width: 4.0,
+              SizedBox(
+                width: showFlag?4.0:0,
               ),
               showFlag?Image.asset(
                 initialValue.flagImagePath,
@@ -146,7 +146,7 @@ void Function()? _openCountryPickerDialog(
               return onValuePicked(country);
             },
             itemBuilder: (Country country) {
-              return CountryCard(country: country);
+              return CountryCard(country: country,showFlag: showFlag,);
             },
             countries: countries,
           ),
@@ -190,7 +190,7 @@ void Function()? _openCountryPickerBottomSheet(
           return onValuePicked(country);
         },
         itemBuilder: (Country country) {
-          return CountryCard(country: country);
+          return CountryCard(country: country,showFlag: showFlag,);
         },
         countries: countries,
       ),
@@ -220,7 +220,7 @@ void Function()? _openCountryPickerPage(
         return onValuePicked(country);
       },
       itemBuilder: (Country country) {
-        return CountryCard(country: country);
+        return CountryCard(country: country,showFlag: showFlag,);
       },
       countries: countries,
     );

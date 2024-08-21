@@ -14,7 +14,7 @@ class CountryCard extends StatelessWidget {
         country.flagImagePath,
         width: 32.0,
         package: 'ephonefield',
-      ):const SizedBox.shrink(),
+      ):const SizedBox.shrink(),minLeadingWidth: showFlag?40:0,
       title: Text(country.name),
       subtitle: Text(country.alpha3),
       trailing: Text(
