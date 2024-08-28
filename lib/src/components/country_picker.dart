@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../enums/country.dart';
 
 class CountryPicker extends StatefulWidget {
@@ -11,7 +10,7 @@ class CountryPicker extends StatefulWidget {
     required this.searchInputDecoration,
     required this.isSearchable,
     required this.countries,
-     this.showFlag = false,
+    this.showFlag = false,
   });
   final void Function(Country) onValuePicked;
   final Widget Function(Country) itemBuilder;
@@ -104,9 +103,9 @@ class _CountryPickerState extends State<CountryPicker> {
                 padding: EdgeInsets.only(top: 100),
                 child: Text(
                   "No countries found",
-                 style: TextStyle(
-                   fontSize: 18,
-                 ),
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                 )),
       ],
     );

@@ -246,7 +246,7 @@ class _EphoneFieldState extends State<EPhoneField> {
                 _focusNode.requestFocus();
               });
             },
-      showFlag: widget.showFlag,
+            showFlag: widget.showFlag,
             menuType: widget.menuType,
             isSearchable: widget.isSearchable,
             searchInputDecoration: widget.searchInputDecoration,

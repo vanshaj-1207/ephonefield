@@ -36,7 +36,7 @@ class CountryPickerButton extends StatelessWidget {
   final String? title;
   final double width;
   final IconData icon;
-  final TextStyle ?textStyle;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -58,25 +58,30 @@ class CountryPickerButton extends StatelessWidget {
           width: width,
           height: 20,
           child: Row(
-            mainAxisAlignment: showFlag?MainAxisAlignment.spaceBetween:MainAxisAlignment.center,
+            mainAxisAlignment: showFlag
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.center,
             children: <Widget>[
               Text(
                 '+${initialValue.dialCode}',
-             style: textStyle??const TextStyle(
-               fontSize: 16,
-               fontWeight: FontWeight.bold,
-             ),
+                style: textStyle ??
+                    const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               SizedBox(
-                width: showFlag?4.0:0,
+                width: showFlag ? 4.0 : 0,
               ),
-              showFlag?Image.asset(
-                initialValue.flagImagePath,
-                width: 20.0,
-                package: 'ephonefield',
-              ):SizedBox.shrink(),
-               SizedBox(
-                width: showFlag?4.0:0,
+              showFlag
+                  ? Image.asset(
+                      initialValue.flagImagePath,
+                      width: 20.0,
+                      package: 'ephonefield',
+                    )
+                  : const SizedBox.shrink(),
+              SizedBox(
+                width: showFlag ? 4.0 : 0,
               ),
               Icon(icon),
             ],
@@ -100,8 +105,16 @@ void Function()? _openCountryPickerMenu(
     void Function(Country) onValuePicked) {
   switch (menuType) {
     case PickerMenuType.dialog:
-      return _openCountryPickerDialog(context, searchInputDecoration, title,
-          titlePadding, isSearchable,showFlag, pickerHeight, countries, onValuePicked);
+      return _openCountryPickerDialog(
+          context,
+          searchInputDecoration,
+          title,
+          titlePadding,
+          isSearchable,
+          showFlag,
+          pickerHeight,
+          countries,
+          onValuePicked);
     case PickerMenuType.bottomSheet:
       return _openCountryPickerBottomSheet(
           context,
@@ -115,7 +128,7 @@ void Function()? _openCountryPickerMenu(
           onValuePicked);
     case PickerMenuType.page:
       return _openCountryPickerPage(context, searchInputDecoration, title,
-          titlePadding, isSearchable,showFlag, countries, onValuePicked);
+          titlePadding, isSearchable, showFlag, countries, onValuePicked);
   }
 }
 
@@ -148,7 +161,10 @@ void Function()? _openCountryPickerDialog(
               return onValuePicked(country);
             },
             itemBuilder: (Country country) {
-              return CountryCard(country: country,showFlag: showFlag,);
+              return CountryCard(
+                country: country,
+                showFlag: showFlag,
+              );
             },
             countries: countries,
           ),
@@ -192,7 +208,10 @@ void Function()? _openCountryPickerBottomSheet(
           return onValuePicked(country);
         },
         itemBuilder: (Country country) {
-          return CountryCard(country: country,showFlag: showFlag,);
+          return CountryCard(
+            country: country,
+            showFlag: showFlag,
+          );
         },
         countries: countries,
       ),
@@ -222,7 +241,10 @@ void Function()? _openCountryPickerPage(
         return onValuePicked(country);
       },
       itemBuilder: (Country country) {
-        return CountryCard(country: country,showFlag: showFlag,);
+        return CountryCard(
+          country: country,
+          showFlag: showFlag,
+        );
       },
       countries: countries,
     );
