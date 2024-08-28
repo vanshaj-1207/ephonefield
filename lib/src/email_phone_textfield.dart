@@ -35,6 +35,7 @@ class EPhoneField extends StatefulWidget {
     this.phoneLabelText = 'Phone number',
     this.onSaved,
     this.onFieldSubmitted,
+    this.textStyle,
     this.decoration = const InputDecoration(
       border: OutlineInputBorder(),
       hintText: 'Email or phone number',
@@ -166,6 +167,7 @@ class EPhoneField extends StatefulWidget {
 
   /// The [AutovalidateMode] to be used as the autovalidate mode of the input field. Defaults to [AutovalidateMode.onUserInteraction].
   final AutovalidateMode? autovalidateMode;
+  final TextStyle? textStyle;
 
   @override
   State<EPhoneField> createState() => _EphoneFieldState();
@@ -236,6 +238,7 @@ class _EphoneFieldState extends State<EPhoneField> {
     return isPhoneFieldSelected
         ? CountryPickerButton(
             initialValue: _selectedCountry,
+            textStyle: widget.textStyle,
             onValuePicked: (Country country) {
               setState(() {
                 _selectedCountry = country;

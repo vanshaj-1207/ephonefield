@@ -21,6 +21,7 @@ class CountryPickerButton extends StatelessWidget {
     required this.width,
     required this.icon,
     required this.pickerHeight,
+    required this.textStyle,
   });
 
   final void Function(Country) onValuePicked;
@@ -35,6 +36,7 @@ class CountryPickerButton extends StatelessWidget {
   final String? title;
   final double width;
   final IconData icon;
+  final TextStyle ?textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +58,11 @@ class CountryPickerButton extends StatelessWidget {
           width: width,
           height: 20,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: showFlag?MainAxisAlignment.spaceBetween:MainAxisAlignment.center,
             children: <Widget>[
               Text(
                 '+${initialValue.dialCode}',
-             style: const TextStyle(
+             style: textStyle??const TextStyle(
                fontSize: 16,
                fontWeight: FontWeight.bold,
              ),
