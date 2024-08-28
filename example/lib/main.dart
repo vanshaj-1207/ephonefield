@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
                     }
                     return null;
                   },
-                  pickerHeight: CountryPickerHeigth.h50, // Not Effective in PickerMenuType.page
+                  pickerHeight: CountryPickerHeigth
+                      .h50, // Not Effective in PickerMenuType.page
                   onCountryChanged: (Country? country) {
                     // Add your code here after country selected
                   },
